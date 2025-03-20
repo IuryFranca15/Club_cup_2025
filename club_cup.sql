@@ -4,7 +4,7 @@ DROP DATABASE IF EXISTS cup_club2025;
 CREATE DATABASE cup_club2025;
 USE cup_club2025;
 
--- Create Confederation table
+
 CREATE TABLE confederation (
     conf_id INT PRIMARY KEY AUTO_INCREMENT,
     conf_name VARCHAR(100),
@@ -19,8 +19,6 @@ INSERT INTO confederation (conf_name, conf_abr) VALUES
     ('Asian Football Confederation', 'AFC'),
     ('Oceania Football Confederation', 'OFC');
 
-
--- Create Country table (make sure to reference the correct table and column)
 CREATE TABLE country (
     id INT PRIMARY KEY AUTO_INCREMENT,
     country_name VARCHAR(100) NOT NULL,
@@ -206,7 +204,7 @@ INNER JOIN group_b ON clubs.club_id = group_b.club_id
 GROUP BY club_fifa_rank
 ORDER BY club_fifa_rank ASC;
 
-
+-- alterando a tabela clubes e adicionando uma coluna de datas dos títulos
 ALTER TABLE clubs
 ADD COLUMN years_won VARCHAR(300) AFTER cup_club_titles;
 
@@ -258,5 +256,5 @@ inner join clubs on country.id = clubs.id_club_country
 group by country_name 
 order by sum desc;
 
-
+-- visão geral (clubs e country é o central do banco)
 select * from clubs;
